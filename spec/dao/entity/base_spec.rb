@@ -70,4 +70,14 @@ describe Dao::Entity::Base do
       its(:to_key) { is_expected.to be_nil }
     end
   end
+
+  describe '#entity_state' do
+    let(:post) { Post.new(attributes) }
+
+    subject { post.entity_state }
+
+    its(:name) { is_expected.to eq 'Article' }
+    its(:name_changed?) { is_expected.to be_falsey }
+    its(:name_was) { is_expected.to eq 'Article' }
+  end
 end
