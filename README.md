@@ -22,7 +22,30 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+require 'dao/entity'
+
+class CommentEntity < Dao::Entity::Base
+  attribute :body, String
+end
+
+class PostEntity < Dao::Entity::Base
+  attribute :id,       Integer
+  attribute :body,     String
+
+  attribute :comments, Array[CommentEntity]
+end
+
+post = PostEntity.new(id: 1, body: 'Post body', comments: [{ id: 1, body: 'Comment body' }])
+
+post.id # => 1
+post.body # => "Post body"
+post.comments # => [#<CommentEntity:0x007ffdcb923a30>]
+
+post.body = 'New body'
+post.entity_state.body_changed? # => true
+post.entity_state.body_was # => "Post body"
+```
 
 ## Development
 
@@ -32,7 +55,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/dao-entity.
+Bug reports and pull requests are welcome on GitHub at https://github.com/dao-rb/dao-entity.
 
 
 ## License
