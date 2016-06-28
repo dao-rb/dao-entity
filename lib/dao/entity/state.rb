@@ -6,7 +6,7 @@ module Dao
       def self.build_with_attrs(attrs)
         state = Class.new(self)
 
-        state.define_attribute_methods *attrs
+        state.define_attribute_methods(*attrs)
 
         state.send(:attr_accessor, *attrs)
         attrs.each do |attr|
