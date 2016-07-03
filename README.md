@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/dao-rb/dao-entity.svg?branch=master)](https://travis-ci.org/dao-rb/dao-entity)
 [![Code Climate](https://codeclimate.com/github/dao-rb/dao-entity/badges/gpa.svg)](https://codeclimate.com/github/dao-rb/dao-entity)
-[![Test Coverage](https://codeclimate.com/repos/5772c7700d9c6e0067002c74/badges/7a1a924db7afcf9ed068/coverage.svg)](https://codeclimate.com/repos/5772c7717be4200075002276/coverage)
+[![Test Coverage](https://codeclimate.com/repos/5772c7700d9c6e0067002c74/badges/2376d7e0731cb6672a41/coverage.svg)](https://codeclimate.com/repos/5772c7700d9c6e0067002c74/coverage)
 
 ## Installation
 
@@ -61,4 +61,3 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/dao-rb
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-
