@@ -5,6 +5,10 @@ end
 
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 
+require 'byebug'
+require 'pry'
+require 'pry-byebug'
+
 require 'rspec/its'
 
 require 'dao/entity'

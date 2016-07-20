@@ -1,4 +1,4 @@
 class Comment < Dao::Entity::Base
-  attribute :user_name
-  attribute :body
+  attribute :user_name, String
+  attribute :body, String
 end
