@@ -7,8 +7,11 @@ module Dao
 
       def initialize(attrs = {})
         super
+        after_initialize
+      end
+
+      def after_initialize
         @initialized_with = []
-        @entity_state = self.class.state_class.new(attributes)
       end
 
       def initialized_with=(attrs)
@@ -17,10 +20,6 @@ module Dao
 
       def persisted?
         id.present? if respond_to?(:id)
-      end
-
-      def entity_state
-        @entity_state.tap { |s| s.assign_attributes(attributes) }
       end
 
       def to_key
@@ -43,11 +42,7 @@ module Dao
       alias eql? ==
       alias equal? eql?
 
-      private
-
-      def self.state_class
-        @state_class ||= State.build_with_attrs(attribute_set.collect(&:name))
-      end
+      protected
 
       def identity
         if respond_to?(:id)
