@@ -12,21 +12,33 @@ describe Dao::Entity::Base do
     }
   end
 
+  shared_context 'post attributes' do
+    describe 'attributes' do
+      subject { post }
+
+      its(:id) { is_expected.to eq 1 }
+      its(:name) { is_expected.to eq 'Article' }
+      its(:comments) { is_expected.to contain_exactly(instance_of(Comment)) }
+
+      describe '#comments' do
+        subject { post.comments.first }
+
+        its(:user_name) { is_expected.to eq 'user' }
+        its(:body) { is_expected.to eq 'Body' }
+      end
+    end
+  end
+
   describe 'attributes' do
     let(:post) { Post.new(attributes) }
 
-    subject { post }
+    it_should_behave_like 'post attributes'
+  end
 
-    its(:id) { is_expected.to eq 1 }
-    its(:name) { is_expected.to eq 'Article' }
-    its(:comments) { is_expected.to contain_exactly(instance_of(Comment)) }
+  describe 'marshal' do
+    let(:post) { Marshal.load(Marshal.dump(Post.new(attributes))) }
 
-    describe '#comments' do
-      subject { post.comments.first }
-
-      its(:user_name) { is_expected.to eq 'user' }
-      its(:body) { is_expected.to eq 'Body' }
-    end
+    it_should_behave_like 'post attributes'
   end
 
   describe '#initialized_with' do
