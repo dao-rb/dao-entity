@@ -32,7 +32,7 @@ module Dao
       end
 
       def ==(other)
-        hash == other.hash
+        other.instance_of?(self.class) && other.identity == identity
       end
 
       def <=>(other)
