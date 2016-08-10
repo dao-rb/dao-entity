@@ -36,6 +36,7 @@ module Dao
       end
 
       def <=>(other)
+        raise ArgumentError, "comparison of #{ self.class.name } with #{ other.class.name } failed" unless other.instance_of?(self.class)
         id <=> other.id
       end
 
