@@ -41,7 +41,6 @@ module Dao
       end
 
       alias eql? ==
-      alias equal? eql?
 
       protected
 
